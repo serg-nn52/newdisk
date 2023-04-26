@@ -54,7 +54,11 @@ export default {
   mounted() {
     const { search } = this.$route.query;
 
-    this.searchWords = typeof search === 'string' ? search : search.join(' ');
+    if (typeof search === 'string') {
+      this.searchWords = search;
+    } else {
+      search && search.join(' ');
+    }
   },
 };
 </script>
