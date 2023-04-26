@@ -4,7 +4,7 @@
       <p class="user__name">Сергей</p>
       <p>Сотрудник</p>
     </div>
-    <img class="avatar" src="@/assets/avatar.jpg" alt="avatar" />
+    <img class="avatar" src="@/assets/img/avatar.jpg" alt="avatar" />
   </div>
 </template>
 

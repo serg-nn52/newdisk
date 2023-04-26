@@ -23,9 +23,6 @@ export default {
       };
     },
   },
-  mounted() {
-    console.log(typeof this.percents);
-  },
 };
 </script>
 
@@ -40,8 +37,7 @@ export default {
   --percentage: var(--value);
   --primary: orange;
   --secondary: #e6e6e6;
-  --size: 35px;
-  animation: progress 2s 0.5s forwards;
+  --size: 38px;
   width: var(--size);
   aspect-ratio: 1;
   border-radius: 50%;

@@ -15,5 +15,11 @@ module.exports = {
     'vuejs-accessibility/label-has-for': 'off',
     'implicit-arrow-linebreak': 'off',
     'operator-linebreak': 'off',
+    'no-nested-ternary': 'off',
+    'no-confusing-arrow': 'off',
+    'function-paren-newline': 'off',
+    'vuejs-accessibility/click-events-have-key-events': 'off',
+    'no-unused-expressions': 'off',
+    'import/prefer-default-export': 'off',
   },
 };

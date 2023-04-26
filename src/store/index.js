@@ -1,27 +1,28 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import { getters } from './getters';
+import { mutations } from './mutations';
 import { data } from '../data';
 
 Vue.use(Vuex);
 
+const students = data
+  .sort((a, b) => (a.name > b.name ? 1 : -1))
+  .map((el) => ({
+    ...el,
+    sum: el.subjects.reduce((acc, item) => acc + +item.score, 0),
+    percents: Math.round((el.subjects.reduce((acc, item) => acc + +item.score, 0) / 15) * 100),
+  }));
+
 export default new Vuex.Store({
   state: {
-    students: data,
+    students,
+    sort: {
+      field: 'name',
+      method: 'up',
+    },
+    filters: [],
   },
-  getters: {
-    getStudents: (state) => state.students,
-    getSumScores: (state) => (id) =>
-      state.students.find((el) => el.id === id).subjects.reduce((acc, el) => acc + +el.score, 0),
-    getPercents: (state) => (id) =>
-      Math.round(
-        (state.students
-          .find((el) => el.id === id)
-          .subjects.reduce((acc, el) => acc + +el.score, 0) /
-          15) *
-          100,
-      ),
-  },
-  mutations: {},
-  actions: {},
-  modules: {},
+  getters,
+  mutations,
 });

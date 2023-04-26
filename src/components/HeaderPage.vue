@@ -14,7 +14,7 @@
 
 <script>
 import UserInfo from '@/widgets/UserInfo.vue';
-import LogoHeader from '../assets/logo.svg';
+import LogoHeader from '../assets/icons/logo.svg';
 
 export default {
   components: {
