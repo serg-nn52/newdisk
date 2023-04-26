@@ -1,6 +1,6 @@
 <template>
   <div v-if="getFilterStudents.length" class="table">
-    <div class="table-header">
+    <div class="table-header" onselectstart="return false" onmousedown="return false">
       <sortable-cell :name="'name'">ФИО</sortable-cell>
       <sortable-cell :name="'date'">Дата подачи заявления</sortable-cell>
       <sortable-cell :name="'russian'">Балл по русскому</sortable-cell>
@@ -47,11 +47,13 @@ export default {
   },
   mounted() {
     const { search, sortName, sortMethod } = this.$route.query;
+
     if (typeof search === 'string') {
       this.setFiltersMutation(Object.values([search]));
     } else {
       search && this.setFiltersMutation(Object.values(search));
     }
+
     if (sortName && sortMethod) {
       this.setSortState({ name: sortName, method: sortMethod });
     }
