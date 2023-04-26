@@ -74,6 +74,7 @@ export default {
   color: var(--blue);
   div {
     padding: 10px 5px;
+    cursor: pointer;
     svg {
       fill: var(--blue);
       height: 10px;
@@ -90,6 +91,7 @@ export default {
     align-items: center;
     padding: 10px;
     background-color: var(--white);
+    font-size: 14px;
   }
 }
 .not-found {

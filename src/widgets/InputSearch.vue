@@ -29,7 +29,10 @@ export default {
   computed: {
     ...mapGetters(['getSort']),
     searchWordsArray() {
-      return this.searchWords.split(' ').filter((el) => !!el);
+      return this.searchWords
+        .toLowerCase()
+        .split(' ')
+        .filter((el) => !!el);
     },
   },
   methods: {
