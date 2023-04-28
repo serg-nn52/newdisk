@@ -18,7 +18,7 @@
     }
 
     @else if $size ==xl {
-        @media (max-width: 1199.98px) {
+        @media (max-width: 1139.98px) {
             @content;
         }
     }

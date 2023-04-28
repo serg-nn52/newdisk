@@ -3,7 +3,9 @@
     <div class="container">
       <h1 class="title">Список заявлений</h1>
       <input-search class="search" />
+      <select-mobile />
       <student-table />
+      <mobile-table />
     </div>
   </layout-page>
 </template>
@@ -12,6 +14,8 @@
 import LayoutPage from '@/components/LayoutPage.vue';
 import InputSearch from '@/widgets/InputSearch.vue';
 import StudentTable from '@/components/StudentTable.vue';
+import SelectMobile from '@/widgets/SelectMobile.vue';
+import MobileTable from '@/components/MobileTable.vue';
 
 export default {
   name: 'HomeView',
@@ -19,6 +23,8 @@ export default {
     LayoutPage,
     InputSearch,
     StudentTable,
+    SelectMobile,
+    MobileTable,
   },
 };
 </script>

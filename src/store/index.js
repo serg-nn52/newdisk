@@ -19,7 +19,7 @@ export default new Vuex.Store({
     students,
     sort: {
       field: 'name',
-      method: 'up',
+      method: 'down',
     },
     filters: [],
   },

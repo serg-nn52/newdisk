@@ -2,8 +2,8 @@
   <div @click="sort" class="header-cell">
     <slot></slot>
     <span v-show="name === getSort.field"
-      >{{ ' ' }}<ArrowDown v-if="getSort.method === 'up'" /><ArrowUp
-        v-if="getSort.method === 'down'"
+      >{{ ' ' }}<ArrowDown v-if="getSort.method === 'down'" /><ArrowUp
+        v-if="getSort.method === 'up'"
     /></span>
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
   methods: {
     ...mapMutations(['setSortState']),
     sort() {
-      this.method = this.method === 'up' ? 'down' : 'up';
+      this.method = this.method === 'down' ? 'up' : 'down';
       this.setSortState({ name: this.name, method: this.method });
       const query = {
         sortName: this.name,

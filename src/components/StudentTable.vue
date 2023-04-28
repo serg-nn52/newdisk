@@ -1,25 +1,27 @@
 <template>
-  <div v-if="getFilterStudents.length" class="table">
-    <div class="table-header" onselectstart="return false" onmousedown="return false">
-      <sortable-cell :name="'name'">ФИО</sortable-cell>
-      <sortable-cell :name="'date'">Дата подачи заявления</sortable-cell>
-      <sortable-cell :name="'russian'">Балл по русскому</sortable-cell>
-      <sortable-cell :name="'math'">Балл по математике</sortable-cell>
-      <sortable-cell :name="'informatics'">Балл по информатике</sortable-cell>
-      <sortable-cell :name="'sum'">Суммарный балл</sortable-cell>
-      <sortable-cell :name="'percents'">Процент</sortable-cell>
+  <div class="wrapper-table">
+    <div v-if="getFilterStudents.length" class="table">
+      <div class="table-header" onselectstart="return false" onmousedown="return false">
+        <sortable-cell :name="'name'">ФИО</sortable-cell>
+        <sortable-cell :name="'date'">Дата подачи заявления</sortable-cell>
+        <sortable-cell :name="'russian'">Балл по русскому</sortable-cell>
+        <sortable-cell :name="'math'">Балл по математике</sortable-cell>
+        <sortable-cell :name="'informatics'">Балл по информатике</sortable-cell>
+        <sortable-cell :name="'sum'">Суммарный балл</sortable-cell>
+        <sortable-cell :name="'percents'">Процент</sortable-cell>
+      </div>
+      <div v-for="student in getFilterStudents" :key="student.id" class="table-row">
+        <div class="row-name">{{ student.name }}</div>
+        <div class="row-date">{{ parseDate(student.date) }}</div>
+        <score-cell :score="Number(student.subjects[0].score).toFixed(1)" />
+        <score-cell :score="Number(student.subjects[1].score).toFixed(1)" />
+        <score-cell :score="Number(student.subjects[2].score).toFixed(1)" />
+        <score-cell :isSum="true" :score="student.sum" />
+        <progressbar-cell :percents="student.percents" />
+      </div>
     </div>
-    <div v-for="student in getFilterStudents" :key="student.id" class="table-row">
-      <div class="row-name">{{ student.name }}</div>
-      <div class="row-date">{{ parseDate(student.date) }}</div>
-      <score-cell :score="Number(student.subjects[0].score).toFixed(1)" />
-      <score-cell :score="Number(student.subjects[1].score).toFixed(1)" />
-      <score-cell :score="Number(student.subjects[2].score).toFixed(1)" />
-      <score-cell :isSum="true" :score="student.sum" />
-      <progressbar-cell :percents="student.percents" />
-    </div>
+    <h2 class="not-found" v-else>Результаты не найдены!</h2>
   </div>
-  <h2 class="not-found" v-else>Результаты не найдены!</h2>
 </template>
 
 <script>
@@ -62,10 +64,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/_media.scss';
+.wrapper-table {
+  width: 100%;
+  overflow-x: auto;
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+  &::-webkit-scrollbar {
+    height: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    height: 5px;
+    border-radius: 2px;
+    background-color: var(--border-input);
+  }
+  //firefox
+  scrollbar-color: var(--border-input) var(--bg-main);
+}
 .table {
+  width: 1110px;
   display: grid;
   grid-gap: 5px;
   margin-top: 30px;
+  padding-bottom: 5px;
 }
 .table-header {
   display: grid;
