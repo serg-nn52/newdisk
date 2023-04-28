@@ -48,7 +48,11 @@ export default {
   }
 }
 .not-found {
+  display: none;
   margin-top: 30px;
   font-size: 18px;
+  @include media-breakpoint-down(md) {
+    display: block;
+  }
 }
 </style>
