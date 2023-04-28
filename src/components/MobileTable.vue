@@ -29,8 +29,8 @@ export default {
   methods: {
     ...mapMutations(['setSortState', 'setFiltersMutation']),
     parseDate(date) {
-      const dateFormated = new Date(date);
-      return dateFormated.toLocaleString().split(',')[0];
+      const dateFormatted = new Date(date);
+      return dateFormatted.toLocaleString().split(',')[0];
     },
   },
 };
